@@ -1,1 +1,8 @@
 .DS_Store
+.vscode
+
+# Ignore binaries
+lab*/[^.]*      
+# [^.] = orice caracter mai putin .
+# but don't ignore Makefile
+!lab**/Makefile
