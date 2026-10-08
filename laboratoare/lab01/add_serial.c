@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /*
     implementare seriala pentru exercitiul 5
@@ -31,10 +32,19 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  // Masuram timpul
+  struct timespec start, finish; 
+  double elapsed; 
+  clock_gettime(CLOCK_MONOTONIC, &start); 
+
   // Vom folosi varianta implementata serial ca referinta (baseline) pentru calculul acceleratiei (speedup-ului)
   for (int i = 0; i < array_size; i++) {
     arr[i] += 100;
   }
+
+  clock_gettime(CLOCK_MONOTONIC, &finish);
+  elapsed = (finish.tv_sec - start.tv_sec);
+  elapsed += (finish.tv_nsec - start.tv_nsec) / 1000000000.0; 
 
   for (int i = 0; i < array_size; i++) {
     printf("%d", arr[i]);
@@ -44,6 +54,8 @@ int main(int argc, char *argv[]) {
       printf("\n");
     }
   }
+
+  printf("%f s\n", elapsed);
 
   return 0;
 }
