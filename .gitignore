@@ -2,7 +2,10 @@
 .vscode
 
 # Ignore binaries
-lab*/[^.]*      
-# [^.] = orice caracter mai putin .
-# but don't ignore Makefile
-!lab**/Makefile
+laboratoare/lab*/*
+
+# but don't ignore normal files
+!laboratoare/lab*/*.*      
+
+# and don't ignore Makefile
+!laboratoare/lab*/Makefile
